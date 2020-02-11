@@ -1,0 +1,32 @@
+name: Build & Deploy releases
+
+on: [push]
+
+jobs:
+  build:
+    name: Build on ${{matrix.os}}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        # macOS Catalina 10.15, Ubuntu 18.04, Windows Server 2019
+        # see https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners#supported-runners-and-hardware-resources
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+      
+      - name: Install Qt5
+        # Version 5.12.6
+        # see https://github.com/marketplace/actions/install-qt
+        uses: jurplel/install-qt-action@v2
+
+      - name: Run CMake
+        # see https://github.com/marketplace/actions/run-cmake
+        uses: lukka/run-cmake@v0
+        with:
+          cmakeListsOrSettingsJson: "CMakeListsTxtBasic"
+          cmakeBuildType: "Release"
+          buildDirectory: "${{ github.workspace }}/build"
