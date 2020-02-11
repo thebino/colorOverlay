@@ -20,8 +20,10 @@ jobs:
       
       - name: Install Qt5
         # Version 5.12.6
-        # see https://github.com/marketplace/actions/install-qt
-        uses: jurplel/install-qt-action@v2
+        # see https://github.com/marketplace/actions/install-qt-dev-action
+        uses: actions/install-qt-action@v0.1.1
+        with:
+          packages: 'qt.qt5.5126.gcc_64'
 
       - name: Run CMake
         # see https://github.com/marketplace/actions/run-cmake
