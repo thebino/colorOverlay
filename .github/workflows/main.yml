@@ -18,11 +18,10 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v2
       
-      - name: Install Qt5 (linux & mac)
+      - name: Install Qt5
         # Version 5.12.6
         # see https://github.com/marketplace/actions/install-qt
         uses: jurplel/install-qt-action@v2
-        if: !contains( matrix.os, 'windows')
 
       - name: Install Qt5 (windows only)
         uses: jurplel/install-qt-action@v2
