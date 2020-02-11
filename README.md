@@ -1,7 +1,7 @@
 # colorOverlay
 Application to add a color overlay and overwrite the origin file
 
-![](https://github.com/thebino/colorOverlay/workflows/Build/badge.svg)
+![](https://github.com/thebino/colorOverlay/workflows/Build%20&%20Deploy%20releases/badge.svg)
 
 
 ## Installation
@@ -39,7 +39,7 @@ Distributed under the GNU General Public License 3 (CC BY 4.0) license. See ``LI
 
 ## Contributing
 
-1. Fork it (https://github.com/thebino/libgphoto2android/fork>)
+1. Fork it (https://github.com/thebino/colorOverlay/fork>)
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
