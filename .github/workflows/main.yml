@@ -21,7 +21,7 @@ jobs:
       - name: Install Qt5
         # Version 5.12.6
         # see https://github.com/marketplace/actions/install-qt-dev-action
-        uses: actions/install-qt-action@v0.1.1
+        uses: Mercotui/install-qt-dev-action@v0.1.1
         with:
           packages: 'qt.qt5.5126.gcc_64'
 
