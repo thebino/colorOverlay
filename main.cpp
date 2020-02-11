@@ -55,7 +55,7 @@ void MainWindow::dropEvent(QDropEvent *e)
 
         painter.end();
 
-        bool result = resultImage.save(fileName);
+        resultImage.save(fileName);
     }
 }
 
