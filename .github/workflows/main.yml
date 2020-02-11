@@ -23,19 +23,19 @@ jobs:
         # see https://github.com/marketplace/actions/install-qt
         uses: jurplel/install-qt-action@v2
 
-      - name: Run CMake
+      - name: Run CMake (windows only)
         uses: lukka/run-cmake@v0
         if: contains( matrix.os, 'windows')
         with:
-          cmakeListsOrSettingsJson: CMakeListsTxtBasic
+          inheritEnvironments: [ "msvc_x64_x64" ]
+          cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
+          cmakeAppendedArgs: '-G "Visual Studio 15 2017" -A Win32'
           cmakeBuildType: "Release"
           buildDirectory: "${{ github.workspace }}/build"
-          cmakeAppendedArgs: '-G "Visual Studio 15 2017" -A Win32'
 
       - name: Run CMake
         # see https://github.com/marketplace/actions/run-cmake
         uses: lukka/run-cmake@v0
         with:
-          cmakeListsOrSettingsJson: "CMakeListsTxtBasic"
           cmakeBuildType: "Release"
           buildDirectory: "${{ github.workspace }}/build"
