@@ -24,6 +24,7 @@ jobs:
         uses: jurplel/install-qt-action@v2
         if: contains( matrix.os, 'macos')
         with:
+          version: 5.11.3
           modules: qtcharts
 
       - name: Install Qt5 (ubuntu)
@@ -32,14 +33,16 @@ jobs:
         uses: jurplel/install-qt-action@v2
         if: contains( matrix.os, 'ubuntu')
         with:
+          version: 5.11.3
           modules: qtcharts
 
       - name: Install Qt5 (windows only)
         uses: jurplel/install-qt-action@v2
         if: contains( matrix.os, 'windows')
         with:
-          arch: win64_mingw53
+          version: 5.11.3
           modules: qtcharts
+          arch: win64_mingw53
 
       - name: Run CMake
         # see https://github.com/marketplace/actions/run-cmake
