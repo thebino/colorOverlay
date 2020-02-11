@@ -27,7 +27,7 @@ jobs:
         uses: jurplel/install-qt-action@v2
         if: contains( matrix.os, 'windows')
         with:
-          arch: jurplel/install-qt-action@v2
+          arch: win32_mingw53
 
       - name: Run CMake
         # see https://github.com/marketplace/actions/run-cmake
