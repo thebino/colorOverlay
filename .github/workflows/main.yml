@@ -22,8 +22,6 @@ jobs:
         # Version 5.12.6
         # see https://github.com/marketplace/actions/install-qt
         uses: jurplel/install-qt-action@v2
-        with:
-          arch: "win64_mingw73"
 
       - name: Run CMake
         # see https://github.com/marketplace/actions/run-cmake
