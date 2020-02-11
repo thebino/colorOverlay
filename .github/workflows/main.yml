@@ -18,19 +18,17 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v2
       
-      - name: Install Qt5
+      - name: Install Qt5 (linux & mac)
         # Version 5.12.6
         # see https://github.com/marketplace/actions/install-qt
         uses: jurplel/install-qt-action@v2
+        if: !contains( matrix.os, 'windows')
 
-      - name: Run CMake (windows only)
-        uses: lukka/run-cmake@v0
+      - name: Install Qt5 (windows only)
+        uses: jurplel/install-qt-action@v2
         if: contains( matrix.os, 'windows')
         with:
-          cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
-          cmakeAppendedArgs: '-G "Visual Studio 15 2017" -A Win64'
-          cmakeBuildType: "Release"
-          buildDirectory: "${{ github.workspace }}/build"
+          arch: jurplel/install-qt-action@v2
 
       - name: Run CMake
         # see https://github.com/marketplace/actions/run-cmake
