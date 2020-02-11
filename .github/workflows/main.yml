@@ -13,6 +13,13 @@ jobs:
         # macOS Catalina 10.15, Ubuntu 18.04, Windows Server 2019
         # see https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners#supported-runners-and-hardware-resources
         os: [macos-latest, ubuntu-latest, windows-latest]
+        include:
+          - os: windows-latest
+            configuration: 'x64.*'
+          - os: ubuntu-latest
+            configuration: 'Linux.*'
+          - os: macos-latest
+            configuration: 'Linux.*'
     
     steps:
       - name: Checkout source
@@ -29,4 +36,5 @@ jobs:
         with:
           cmakeListsOrSettingsJson: "CMakeListsTxtBasic"
           cmakeBuildType: "Release"
+          configurationRegexFilter: '${{ matrix.configuration }}'
           buildDirectory: "${{ github.workspace }}/build"
