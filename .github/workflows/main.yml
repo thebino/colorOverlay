@@ -28,7 +28,7 @@ jobs:
         if: contains( matrix.os, 'windows')
         with:
           cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
-          cmakeAppendedArgs: '-G "Visual Studio 14 2015" -A Win32'
+          cmakeAppendedArgs: '-G "Visual Studio 15 2017" -A Win64'
           cmakeBuildType: "Release"
           buildDirectory: "${{ github.workspace }}/build"
 
