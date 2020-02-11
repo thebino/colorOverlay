@@ -27,7 +27,6 @@ jobs:
         uses: lukka/run-cmake@v0
         if: contains( matrix.os, 'windows')
         with:
-          inheritEnvironments: [ "msvc_x64_x64" ]
           cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
           cmakeAppendedArgs: '-G "Visual Studio 15 2017" -A Win32'
           cmakeBuildType: "Release"
