@@ -18,16 +18,23 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v2
       
-      - name: Install Qt5
+      - name: Install Qt5 (mac)
         # Version 5.12.6
         # see https://github.com/marketplace/actions/install-qt
         uses: jurplel/install-qt-action@v2
+        if: contains( matrix.os, 'macos')
+
+      - name: Install Qt5 (ubuntu)
+        # Version 5.12.6
+        # see https://github.com/marketplace/actions/install-qt
+        uses: jurplel/install-qt-action@v2
+        if: contains( matrix.os, 'ubuntu')
 
       - name: Install Qt5 (windows only)
         uses: jurplel/install-qt-action@v2
         if: contains( matrix.os, 'windows')
         with:
-          arch: win32_mingw53
+          arch: win64_mingw53
 
       - name: Run CMake
         # see https://github.com/marketplace/actions/run-cmake
