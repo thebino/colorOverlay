@@ -13,13 +13,6 @@ jobs:
         # macOS Catalina 10.15, Ubuntu 18.04, Windows Server 2019
         # see https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners#supported-runners-and-hardware-resources
         os: [macos-latest, ubuntu-latest, windows-latest]
-        include:
-          - os: windows-latest
-            configuration: 'x64.*'
-          - os: ubuntu-latest
-            configuration: 'Linux.*'
-          - os: macos-latest
-            configuration: 'Linux.*'
     
     steps:
       - name: Checkout source
@@ -31,10 +24,18 @@ jobs:
         uses: jurplel/install-qt-action@v2
 
       - name: Run CMake
+        uses: lukka/run-cmake@v0
+        if: contains( matrix.os, 'windows')
+        with:
+          cmakeListsOrSettingsJson: CMakeListsTxtBasic
+          cmakeBuildType: "Release"
+          buildDirectory: "${{ github.workspace }}/build"
+          cmakeAppendedArgs: '-G "Visual Studio 15 2017" -A Win32'
+
+      - name: Run CMake
         # see https://github.com/marketplace/actions/run-cmake
         uses: lukka/run-cmake@v0
         with:
           cmakeListsOrSettingsJson: "CMakeListsTxtBasic"
           cmakeBuildType: "Release"
-          configurationRegexFilter: '${{ matrix.configuration }}'
           buildDirectory: "${{ github.workspace }}/build"
