@@ -29,4 +29,5 @@ jobs:
         with:
           cmakeListsOrSettingsJson: "CMakeListsTxtBasic"
           cmakeBuildType: "Release"
+          cmakeGenerator: "VS15Arm64"
           buildDirectory: "${{ github.workspace }}/build"
