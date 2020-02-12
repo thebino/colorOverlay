@@ -34,13 +34,20 @@ cmake --build build
 
 Benjamin Stürmer – [@benjaminstrmer](https://twitter.com/benjaminstrmer) – webmaster@stuermer-benjamin.de
 
-Distributed under the GNU General Public License 3 (CC BY 4.0) license. See ``LICENSE`` for more information.
+Distributed under the GNU General Public License 3 (CC BY 4.0) license. See [``LICENSE``](LICENSE) for more information.
+
+
+## Thanks
+
+* [Michele Caini](https://github.com/skypjack) his [shared notes](https://skypjack.github.io/2019-10-23-gh-greets-qt/) on building qt projects with github actions helped me workaround similar issues on public github actions
+
+* [Vincent Lee](https://github.com/euler0) his [mini-cmake-qt](https://github.com/euler0/mini-cmake-qt) template helped me on packaging for macOS and Windows.
 
 
 ## Contributing
 
-1. Fork it (https://github.com/thebino/colorOverlay/fork>)
-2. Create your feature branch (`git checkout -b feature/fooBar`)
+1. Fork it (https://github.com/thebino/colorOverlay/fork)
+2. Create a feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request

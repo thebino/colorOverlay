@@ -1,13 +1,5 @@
-#include "main.h"
-#include <QApplication>
-#include <QWidget>
-#include <QGridLayout>
-#include <QDragEnterEvent>
-#include <QDropEvent>
-#include <QMimeData>
-#include <QMessageBox>
-#include <QPainter>
-#include <QLabel>
+#include "mainwindow.h"
+
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
@@ -57,14 +49,4 @@ void MainWindow::dropEvent(QDropEvent *e)
 
         resultImage.save(fileName);
     }
-}
-
-int main(int argc, char *argv[])
-{
-    QApplication app(argc, argv);
-
-    MainWindow mainwindow = MainWindow();
-    mainwindow.show();
- 
-    return app.exec();
 }

@@ -1,5 +1,16 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef mainwindow_h
+#define mainwindow_h
+
+#include <QApplication>
+#include <QWidget>
+#include <QGridLayout>
+#include <QDragEnterEvent>
+#include <QDropEvent>
+#include <QMimeData>
+#include <QMessageBox>
+#include <QPainter>
+#include <QLabel>
+
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QWidget>
 #include <QtWidgets/QAction>
