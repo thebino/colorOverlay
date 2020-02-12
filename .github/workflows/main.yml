@@ -42,7 +42,7 @@ jobs:
         with:
           version: 5.11.3
           modules: qtcharts
-          arch: win64_mingw73
+          arch: win32_mingw53
 
       - name: Run CMake
         # see https://github.com/marketplace/actions/run-cmake
