@@ -1,8 +1,9 @@
-#ifndef mainwindow_h
-#define mainwindow_h
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
 #include <QApplication>
 #include <QWidget>
+#include <QPushButton>
 #include <QGridLayout>
 #include <QDragEnterEvent>
 #include <QDropEvent>
@@ -10,17 +11,34 @@
 #include <QMessageBox>
 #include <QPainter>
 #include <QLabel>
+#include <QColorDialog>
+#include <QColor>
+#include <QDebug>
+#include <QVBoxLayout>
 
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QWidget>
 #include <QtWidgets/QAction>
 class MainWindow : public QMainWindow
 {
-	public:
-		MainWindow (QWidget *parent = 0);
-		~MainWindow();
+	Q_OBJECT
+
 	private slots:
 		void dragEnterEvent(QDragEnterEvent *e);
 		void dropEvent(QDropEvent *e);
+    	void selectColor();
+
+	public:
+		MainWindow (QWidget *parent = 0);
+		~MainWindow();
+		void setupUi(QMainWindow *parent);
+		
+	private:
+		QColor *color;
+		QWidget *central;
+		QGridLayout *layout;
+		QLabel *label;
+		QPushButton *button;
 };
-#endif
+
+#endif // MAINWINDOW_H

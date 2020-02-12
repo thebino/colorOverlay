@@ -3,17 +3,46 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
-    resize(640, 480);
-    setWindowTitle(tr("colorOverlay"));
-    setAcceptDrops(true);
-
-    QLabel * center = new QLabel(tr("Place your files here!"));
-    center->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
-    setCentralWidget(center);
+    *color = QColor(252, 98, 247, 178);
+    setupUi(this);
+    connect(button, SIGNAL(clicked()), this, SLOT(selectColor()));
 }
 
 MainWindow::~MainWindow()
 {
+}
+
+void MainWindow::setupUi(QMainWindow *parent)
+{
+    central = new QWidget{parent};
+    layout = new QGridLayout{central};
+    label = new QLabel{"Place your files here!"};
+
+    button = new QPushButton(this);
+    button->setText("Select your color");
+
+    label->setAlignment(Qt::AlignCenter);
+    layout->addWidget(button, 0, 0);
+    layout->addWidget(label, 1, 0);
+    parent->setCentralWidget(central);
+    parent->setWindowTitle(tr("colorOverlay"));
+    parent->setMinimumSize(640, 400);
+    parent->setAcceptDrops(true);
+
+    QString qss = QString("background-color: %1").arg(color->name());
+    button->setStyleSheet(qss);
+}
+
+void MainWindow::selectColor()
+{
+    qDebug() << "selectColor()...";
+    *color = QColorDialog::getColor(*color,this);
+    
+    if (color->isValid()) {
+        color->setAlpha(178);
+        QString qss = QString("background-color: %1").arg(color->name());
+        button->setStyleSheet(qss);
+    }
 }
 
 void MainWindow::dragEnterEvent(QDragEnterEvent *e)
@@ -41,7 +70,7 @@ void MainWindow::dropEvent(QDropEvent *e)
         QPainter painter(&resultImage);
         painter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing | QPainter::SmoothPixmapTransform);
         painter.setCompositionMode(QPainter::CompositionMode_Source);
-        painter.fillRect(resultImage.rect(), QColor(252, 98, 247, 178));
+        painter.fillRect(resultImage.rect(), *color);
         painter.setCompositionMode(QPainter::CompositionMode_DestinationOver);
         painter.drawImage(0, 0, sourceImage);
 
